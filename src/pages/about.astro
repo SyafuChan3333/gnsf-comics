@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="作者プロフィール - 4コマ漫画ポートフォリオ">
+  <div class="about-container">
+    <nav class="breadcrumb">
+      <a href="/">← 作品一覧へ戻る</a>
+    </nav>
+
+    <header class="about-header">
+      <h1>作者プロフィール</h1>
+    </header>
+
+    <section class="profile-card">
+      <div class="avatar-wrapper">
+        <img src="https://placehold.co/150x150/e0e0e0/333333?text=Icon" alt="作者アイコン" class="avatar" />
+      </div>
+      <div class="profile-info">
+        <h2>作者名 (Author)</h2>
+        <p class="tagline">4コマ漫画家 / イラストレーター</p>
+        <p class="bio">
+          日常の些細な出来事やクスッと笑えるギャグ4コマ漫画を中心に制作・公開しています。
+          お仕事のご依頼やお問い合わせは下記SNSまたはメールアドレスまでお願いいたします。
+        </p>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <h2>活動実績・掲載履歴</h2>
+      <ul>
+        <li>2025年◯月：Webマンガ大賞 佳作受賞</li>
+        <li>2025年◯月：〇〇誌にて4コマ漫画連載スタート</li>
+      </ul>
+    </section>
+
+    <section class="about-section">
+      <h2>リンク / SNS</h2>
+      <div class="sns-links">
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="sns-btn x-btn">X (Twitter)</a>
+        <a href="https://pixiv.net" target="_blank" rel="noopener noreferrer" class="sns-btn pixiv-btn">pixiv</a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .about-container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .about-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-card {
+    display: flex;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .profile-info h2 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.3rem;
+  }
+
+  .tagline {
+    color: #666;
+    font-size: 0.875rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .bio {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .about-section {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .about-section ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .sns-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .sns-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #fff;
+    background: #333;
+  }
+
+  .x-btn {
+    background: #000;
+  }
+
+  .pixiv-btn {
+    background: #0080ff;
+  }
+
+  @media (max-width: 500px) {
+    .profile-card {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

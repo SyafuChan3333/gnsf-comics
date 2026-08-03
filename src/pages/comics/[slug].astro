@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'daily-life' } },
+    { params: { slug: 'office-cat' } },
+    { params: { slug: 'sf-four-panel' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// 仮の作品・エピソードデータモデル
+const comicDataMap: Record<string, any> = {
+  'daily-life': {
+    title: 'まったり日常4コマ',
+    description: 'マイペースな主人公たちがおくる、クスッと笑えるまったりな日常。',
+    episodes: [
+      {
+        id: 1,
+        title: '第1話：あさの二度寝',
+        imageUrl: 'https://placehold.co/600x1200/ffffff/333333?text=4コマ漫画+第1話%0A%0A【1コマ目】目覚まし%0A【2コマ目】あと5分%0A【3コマ目】二度寝%0A【4コマ目】遅刻！',
+      },
+      {
+        id: 2,
+        title: '第2話：ランチタイム',
+        imageUrl: 'https://placehold.co/600x1200/ffffff/333333?text=4コマ漫画+第2話%0A%0A【1コマ目】お弁当%0A【2コマ目】卵焼き%0A【3コマ目】半分こ%0A【4コマ目】完食',
+      },
+    ]
+  },
+  'office-cat': {
+    title: '会社にいるねこ先輩',
+    description: 'なぜか会社でバリバリ働く猫先輩と新人社員のコミカルお仕事劇！',
+    episodes: [
+      {
+        id: 1,
+        title: '第1話：ねこ先輩登場',
+        imageUrl: 'https://placehold.co/600x1200/fef3c7/1e293b?text=ねこ先輩+第1話%0A%0A【1コマ目】出社%0A【2コマ目】キーボード%0A【3コマ目】威嚇%0A【4コマ目】定時退社',
+      }
+    ]
+  },
+  'sf-four-panel': {
+    title: 'ちょっと未来のすこし不思議',
+    description: '便利になりすぎた近未来の日常を描く、1話完結のSFコメディ。',
+    episodes: [
+      {
+        id: 1,
+        title: '第1話：全自動朝食ロボ',
+        imageUrl: 'https://placehold.co/600x1200/f3e8ff/4c1d95?text=SF4コマ+第1話%0A%0A【1コマ目】起動%0A【2コマ目】調理%0A【3コマ目】暴走%0A【4コマ目】トースト黒こげ',
+      }
+    ]
+  }
+};
+
+const comic = comicDataMap[slug || 'daily-life'] || comicDataMap['daily-life'];
+const currentEpisode = comic.episodes[0];
+---
+
+<Layout title={`${comic.title} - 4コマ漫画ビューアー`}>
+  <div class="comic-container">
+    <nav class="breadcrumb">
+      <a href="/">← 作品一覧へ戻る</a>
+    </nav>
+
+    <header class="comic-header">
+      <h1>{comic.title}</h1>
+      <p class="description">{comic.description}</p>
+    </header>
+
+    <main class="viewer-section">
+      <div class="episode-header">
+        <h2>{currentEpisode.title}</h2>
+      </div>
+
+      <!-- 4コマ漫画表示領域 (縦スクロール・スムーズ表示に最適化) -->
+      <div class="manga-viewer">
+        <img 
+          src={currentEpisode.imageUrl} 
+          alt={`${comic.title} ${currentEpisode.title}`}
+          class="manga-image"
+          loading="eager"
+        />
+      </div>
+
+      <div class="navigation-controls">
+        <button class="nav-btn" disabled>← 前の話</button>
+        <span class="episode-indicator">1 / {comic.episodes.length} 話</span>
+        <button class="nav-btn" disabled={comic.episodes.length <= 1}>次の話 →</button>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .comic-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .comic-header {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .comic-header h1 {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .comic-header .description {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .viewer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .episode-header h2 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 4コマ漫画画像の閲覧に特化したスタイル */
+  .manga-viewer {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid #e0e0e0;
+  }
+
+  .manga-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .navigation-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #eee;
+  }
+
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #0066cc;
+    background: #fff;
+    color: #0066cc;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+
+  .nav-btn:disabled {
+    border-color: #ccc;
+    color: #aaa;
+    cursor: not-allowed;
+  }
+
+  .episode-indicator {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+  }
+</style>

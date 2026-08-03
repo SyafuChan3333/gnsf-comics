@@ -1,0 +1,80 @@
+---
+interface Props {
+  authorName?: string;
+  bio?: string;
+}
+
+const { 
+  authorName = "作者名", 
+  bio = "4コマ漫画を描いています。日常系やシュール系などの作品を公開中！" 
+} = Astro.props;
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="profile-section">
+      <h3>{authorName}</h3>
+      <p>{bio}</p>
+    </div>
+    <div class="links-section">
+      <a href="/">ホーム</a>
+      <a href="/about">プロフィール</a>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; {new Date().getFullYear()} {authorName}. All rights reserved.
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #f4f4f6;
+    border-top: 1px solid #e5e5e8;
+    padding: 2rem 1rem 1rem;
+    margin-top: auto;
+    color: #333;
+    font-family: sans-serif;
+  }
+  .footer-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .profile-section {
+    max-width: 400px;
+  }
+  .profile-section h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  .profile-section p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+  }
+  .links-section {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .links-section a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .links-section a:hover {
+    text-decoration: underline;
+  }
+  .copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+  }
+</style>
