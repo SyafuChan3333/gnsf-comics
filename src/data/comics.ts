@@ -40,8 +40,8 @@ export const comicsData: Comic[] = [
         episodesCount: 6,
         badge: '連載中',
         author: {
-            name: 'ろたんさん',
-            role: '作者・イラスト',
+            name: '流星ろたん',
+            role: '出演',
             socialLinks: [
                 { platform: 'X (Twitter)', url: 'https://x.com/RyuseiRotan' },
                 { platform: 'YouTube', url: 'https://www.youtube.com/channel/UC0InrNgDrH-4irmIVHT_dwQ' }
