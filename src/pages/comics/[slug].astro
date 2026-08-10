@@ -160,7 +160,7 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
       // スムーズスクロールでビューアー位置に移動
       const viewerSection = document.querySelector('.manga-viewer');
       if (viewerSection) {
-        viewerSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        viewerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
