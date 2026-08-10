@@ -1,46 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-// サンプル漫画作品データ
-const comics = [
-  {
-    slug: 'daily-life',
-    title: 'まったり日常4コマ',
-    description: 'マイペースな主人公たちがおくる、クスッと笑えるまったりな日常。',
-    coverImage: 'https://placehold.co/400x250/e0f2fe/0369a1?text=まったり日常4コマ',
-    logoText: 'まったり日常',
-    episodesCount: 12,
-    badge: '完結'
-  },
-  {
-    slug: 'office-cat',
-    title: '会社にいるねこ先輩',
-    description: 'なぜか会社でバリバリ働く猫先輩と新人社員のコミカルお仕事劇！',
-    coverImage: 'https://placehold.co/400x250/fef3c7/b45309?text=会社にいるねこ先輩',
-    logoText: 'ねこ先輩',
-    episodesCount: 8,
-    badge: '連載中'
-  },
-  {
-    slug: 'sf-four-panel',
-    title: 'ちょっと未来のすこし不思議',
-    description: '便利になりすぎた近未来の日常を描く、1話完結のSFコメディ。',
-    coverImage: 'https://placehold.co/400x250/f3e8ff/6b21a8?text=すこし不思議SF',
-    logoText: 'すこし不思議SF',
-    episodesCount: 5,
-    badge: '連載中'
-  }
-];
+import { comicsData } from '../data/comics';
 ---
 
 <Layout title="4コマ漫画ポートフォリオ - 作品一覧">
   <section class="hero">
     <h1>作品ギャラリー</h1>
-    <p>気楽に読める4コマ漫画を公開しています。作品ロゴ・カードをタップしてすぐ読めます！</p>
+    <p>気楽に読める4コマ漫画を公開しています。作品カードをタップしてすぐ読めます！</p>
   </section>
 
   <section class="comic-grid">
-    {comics.map((comic) => (
+    {comicsData.map((comic) => (
       <article class="comic-card">
         <a href={`/comics/${comic.slug}`} class="card-link">
           <div class="image-wrapper">
@@ -50,6 +20,13 @@ const comics = [
           <div class="card-content">
             <h2 class="comic-title">{comic.title}</h2>
             <p class="comic-desc">{comic.description}</p>
+            {comic.featuredCreators && comic.featuredCreators.length > 0 && (
+              <div class="featuring-badge-list">
+                {comic.featuredCreators.map(creator => (
+                  <span class="featuring-tag">Featuring: {creator.name}</span>
+                ))}
+              </div>
+            )}
             <div class="card-meta">
               <span>全 {comic.episodesCount} 話</span>
               <span class="read-button">読む →</span>
@@ -113,7 +90,7 @@ const comics = [
     position: relative;
     width: 100%;
     padding-top: 60.5%; /* Aspect ratio */
-    background: #f0f0f0;
+    background: #f8fafc;
   }
 
   .image-wrapper img {
@@ -122,7 +99,9 @@ const comics = [
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 0.5rem;
+    background: #fafafa;
   }
 
   .badge {
@@ -156,6 +135,22 @@ const comics = [
     line-height: 1.5;
     margin: 0 0 1rem 0;
     flex-grow: 1;
+  }
+
+  .featuring-badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .featuring-tag {
+    font-size: 0.75rem;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
   }
 
   .card-meta {
