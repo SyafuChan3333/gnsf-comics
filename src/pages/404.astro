@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="ページが見つかりません - 4コマ漫画ポートフォリオ">
+  <section class="error-container">
+    <h1>404</h1>
+    <p>お探しのページは見つかりませんでした。</p>
+    <nav class="error-links">
+      <a href="/" class="btn">トップページへ戻る</a>
+      <a href="/about" class="btn">作者プロフィールを見る</a>
+    </nav>
+  </section>
+</Layout>
+
+<style>
+  .error-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .error-container h1 {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: #0284c7;
+    line-height: 1;
+  }
+  .error-container p {
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.25rem;
+  }
+  .error-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #0284c7;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+  .btn:hover {
+    background: #0369a1;
+  }
+</style>
