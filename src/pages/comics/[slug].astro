@@ -86,14 +86,14 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
       <div class="manga-viewer">
         {comic.episodes.map((ep, idx) => (
           <div
-            class={`manga-panel ${idx === 0 ? 'active' : 'hidden'}`}
+            class={`manga-panel ${idx === 0 ? 'active' : idx === 1 ? 'next' : 'hidden'}`}
             id={`ep-panel-${idx}`}
           >
             <img
               src={ep.imageUrl}
               alt={`${comic.title} ${ep.title}`}
               class="manga-image"
-              loading={idx === 0 ? "eager" : "lazy"}
+              loading={idx <= 1 ? "eager" : "lazy"}
             />
           </div>
         ))}
@@ -119,6 +119,7 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
     const epTitle = document.getElementById('ep-title');
     const indicator = document.getElementById('episode-indicator');
     const totalEpisodes = panels.length;
+    const panelClasses = ['active', 'hidden', 'prev', 'next'];
 
     function showEpisode(index) {
       if (index < 0 || index >= totalEpisodes) return;
@@ -126,12 +127,18 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
 
       // パネル切り替え
       panels.forEach((p, idx) => {
-        if (idx === currentIndex) {
-          p.classList.remove('hidden');
+        if (idx === currentIndex - 1) {
+          p.classList.remove(...panelClasses);
+          p.classList.add('prev');
+        } else if (idx === currentIndex) {
+          p.classList.remove(...panelClasses);
           p.classList.add('active');
+        } else if (idx === currentIndex + 1) {
+          p.classList.remove(...panelClasses);
+          p.classList.add('next');
         } else {
+          p.classList.remove(...panelClasses);
           p.classList.add('hidden');
-          p.classList.remove('active');
         }
       });
 
@@ -385,6 +392,7 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
   /* 4コマ漫画画像表示 */
   .manga-viewer {
     width: 100%;
+    height: fit-content;
     max-width: 550px;
     background: #fff;
     border-radius: 12px;
@@ -392,6 +400,7 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
     overflow: hidden;
     margin-bottom: 2rem;
     border: 1px solid #e2e8f0;
+    position: relative;
   }
 
   .manga-panel {
@@ -402,8 +411,28 @@ const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
     display: none;
   }
 
+  .manga-panel.prev {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+  }
+
   .manga-panel.active {
     display: block;
+    position: relative;
+    z-index: 2;
+}
+
+  .manga-panel.next {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
   }
 
   .manga-image {
