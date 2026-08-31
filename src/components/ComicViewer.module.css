@@ -1,0 +1,149 @@
+/* ビューアーセクション */
+.viewer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.episode-selector {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.episode-selector h3 {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+}
+
+.episode-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ep-btn {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ep-btn:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+.ep-btn.active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
+.current-episode-title h2 {
+  font-size: 1.3rem;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+/* 4コマ漫画画像表示 */
+.manga-viewer {
+  width: 100%;
+  height: fit-content;
+  max-width: 550px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.manga-panel {
+  width: 100%;
+}
+
+.manga-panel.hidden {
+  display: none;
+}
+
+.manga-panel.prev {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+}
+
+.manga-panel.active {
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.manga-panel.next {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.manga-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.navigation-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.nav-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid #0284c7;
+  background: #fff;
+  color: #0284c7;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #0284c7;
+  color: #fff;
+}
+
+.nav-btn:disabled {
+  border-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.episode-indicator {
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 600;
+}
