@@ -1,7 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { comicsData } from '../../data/comics';
-import { ComicViewer } from '../../components/ComicViewer';
+import Layout from '@/layouts/Layout.astro';
+import { comicsData } from '@/data/comics';
+import { ComicViewer } from '@/components/ComicViewer';
 
 export function getStaticPaths() {
   return comicsData.map((comic) => ({
@@ -10,7 +10,8 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const comic = comicsData.find((item) => item.slug === slug) || comicsData[0];
+// AstroのgetStaticPathsで存在するslug以外は404に飛ばされるので確実にcomicは存在する
+const comic = comicsData.find((item) => item.slug === slug)!;
 ---
 
 <Layout title={`${comic.title} - 4コマ漫画ビューアー`}>

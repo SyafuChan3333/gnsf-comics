@@ -1,9 +1,9 @@
 import React from "react";
-import type { Comic } from "../data/comics";
+import type { Comic } from "@/data/comics";
 import { useCallback, useRef, useState } from "react";
-import * as styles from "./ComicViewer.css";
+import * as styles from "@/styles/components/ComicViewer.css";
 import classNames from "classnames";
-import { HtmlComment } from "./HtmlComment";
+import { HtmlComment } from "@/components/HtmlComment";
 
 export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
     const [current, setCurrent] = useState(0);

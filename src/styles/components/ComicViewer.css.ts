@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
-import { ref } from "../libs/cssToken";
-import { palette, space, fontSize, radius, shadow } from "../styles/tokens.css";
+import { ref } from "@/libs/cssToken";
+import { palette, space, fontSize, radius, shadow } from "@/styles/tokens.css";
 
 /* ビューアーセクション */
 export const viewerSection = style({
