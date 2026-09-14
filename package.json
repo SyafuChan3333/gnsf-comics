@@ -22,6 +22,7 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@vanilla-extract/vite-plugin": "^5.2.6"
+    "@vanilla-extract/vite-plugin": "^5.2.6",
+    "csstype": "^3.2.3"
   }
 }
