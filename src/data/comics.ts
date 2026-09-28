@@ -30,62 +30,7 @@ export interface Comic {
     episodes: Episode[];
 }
 
-export const comicsData: Comic[] = [
-    {
-        slug: 'ryusei-rotan',
-        title: '流星ろたん 4コマ劇場',
-        description: '',
-        coverImage: '/comics/ryusei-rotan/ryusei-rotan-logo.jpg',
-        logoText: '流星ろたん',
-        episodesCount: 6,
-        badge: '連載中',
-        author: {
-            name: '流星ろたん',
-            role: '出演',
-            socialLinks: [
-                { platform: 'X (Twitter)', url: 'https://x.com/RyuseiRotan' },
-                { platform: 'YouTube', url: 'https://www.youtube.com/channel/UC0InrNgDrH-4irmIVHT_dwQ' }
-            ]
-        },
-        episodes: [
-            {
-                id: 1,
-                title: '第1話',
-                imageUrl: '/comics/ryusei-rotan/rotan_001.jpg',
-
-            },
-            {
-                id: 2,
-                title: '第2話',
-                imageUrl: '/comics/ryusei-rotan/rotan_002.jpg',
-
-            },
-            {
-                id: 3,
-                title: '第3話',
-                imageUrl: '/comics/ryusei-rotan/rotan_003.png',
-
-            },
-            {
-                id: 4,
-                title: '第4話',
-                imageUrl: '/comics/ryusei-rotan/rotan_004.png',
-
-            },
-            {
-                id: 5,
-                title: '第5話',
-                imageUrl: '/comics/ryusei-rotan/rotan_005.png',
-
-            },
-            {
-                id: 6,
-                title: '第6話',
-                imageUrl: '/comics/ryusei-rotan/rotan_006.png',
-
-            }
-        ]
-    },
+const sampleComics: Comic[] = [
     {
         slug: 'daily-life',
         title: 'まったり日常4コマ',
@@ -154,4 +99,83 @@ export const comicsData: Comic[] = [
             }
         ]
     }
+];
+
+export const comicsData: Comic[] = [
+    {
+        slug: 'ryusei-rotan',
+        title: '流星ろたん 4コマ劇場',
+        description: '',
+        coverImage: '/comics/ryusei-rotan/ryusei-rotan-logo.jpg',
+        logoText: '流星ろたん',
+        episodesCount: 6,
+        badge: '連載中',
+        author: {
+            name: '流星ろたん',
+            role: '出演',
+            socialLinks: [
+                { platform: 'X (Twitter)', url: 'https://x.com/RyuseiRotan' },
+                { platform: 'YouTube', url: 'https://www.youtube.com/channel/UC0InrNgDrH-4irmIVHT_dwQ' },
+                { platform: 'Creatia', url: 'https://frontier.creatia.cc/fanclubs/711/' },
+            ]
+        },
+        episodes: [
+            {
+                id: 1,
+                title: '第1話',
+                imageUrl: '/comics/ryusei-rotan/rotan_contact.jpg',
+
+            },
+            {
+                id: 2,
+                title: '第2話',
+                imageUrl: '/comics/ryusei-rotan/rotan_oyugi.jpg',
+
+            },
+            {
+                id: 3,
+                title: '第3話',
+                imageUrl: '/comics/ryusei-rotan/rotan_otomari.png',
+
+            },
+            {
+                id: 4,
+                title: '第4話',
+                imageUrl: '/comics/ryusei-rotan/rotan_market.png',
+
+            },
+            {
+                id: 5,
+                title: '第5話',
+                imageUrl: '/comics/ryusei-rotan/rotan_timekeep.png',
+
+            },
+            {
+                id: 6,
+                title: '第6話',
+                imageUrl: '/comics/ryusei-rotan/rotan_sight2.png',
+
+            },
+            {
+                id: 7,
+                title: '第7話',
+                imageUrl: '/comics/ryusei-rotan/rotan_cleanup.png',
+
+            },
+            {
+                id: 8,
+                title: '第8話',
+                imageUrl: '/comics/ryusei-rotan/rotan_library.png',
+
+            },
+            {
+                id: 9,
+                title: '第9話',
+                imageUrl: '/comics/ryusei-rotan/rotan_twicast.png',
+
+            },
+        ]
+    },
+    // 2026-09-28 スミス 例示用データを非表示
+    // ...sampleComics
 ];
