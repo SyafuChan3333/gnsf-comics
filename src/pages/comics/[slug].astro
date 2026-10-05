@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import { comicsData } from '@/data/comics';
 import { ComicViewer } from '@/components/ComicViewer';
+import { siteAbsPath } from '@/libs/astro';
 
 export function getStaticPaths() {
   return comicsData.map((comic) => ({
@@ -17,7 +18,7 @@ const comic = comicsData.find((item) => item.slug === slug)!;
 <Layout title={`${comic.title} - 4コマ漫画ビューアー`}>
   <div class="comic-container">
     <nav class="breadcrumb">
-      <a href="/">← 作品一覧へ戻る</a>
+      <a href={siteAbsPath("/")}>← 作品一覧へ戻る</a>
     </nav>
 
     <header class="comic-header">

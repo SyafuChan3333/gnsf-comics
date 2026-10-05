@@ -1,4 +1,6 @@
 ---
+import { siteAbsPath } from '@/libs/astro';
+
 interface Props {
   authorName?: string;
   bio?: string;
@@ -17,8 +19,8 @@ const {
       <p>{bio}</p>
     </div>
     <div class="links-section">
-      <a href="/">ホーム</a>
-      <a href="/about">プロフィール</a>
+      <a href={siteAbsPath("/")}>ホーム</a>
+      <a href={siteAbsPath("/about")}>プロフィール</a>
     </div>
   </div>
   <div class="copyright">

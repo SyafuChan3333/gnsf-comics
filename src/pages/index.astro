@@ -12,8 +12,8 @@ import { comicsData } from '@/data/comics';
   <section class="comic-grid">
     {comicsData.map((comic) => (
       <article class="comic-card">
-        <a href={`/comics/${comic.slug}`} class="card-link">
-          <div class="image-wrapper">
+        <a href={siteAbsPath(`/comics/${comic.slug}`)} class="card-link">
+          <div class={styles.cardImageWrapper}>
             <img src={comic.coverImage} alt={comic.title} loading="lazy" />
             <span class="badge">{comic.badge}</span>
           </div>

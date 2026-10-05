@@ -1,3 +1,5 @@
+import { siteAbsPath } from "@/libs/astro";
+
 export interface SocialLink {
     platform: string;
     url: string;
@@ -106,7 +108,7 @@ export const comicsData: Comic[] = [
         slug: 'ryusei-rotan',
         title: '流星ろたん 4コマ劇場',
         description: '',
-        coverImage: '/comics/ryusei-rotan/ryusei-rotan-logo.jpg',
+        coverImage: siteAbsPath('/comics/ryusei-rotan/ryusei-rotan-logo.jpg'),
         logoText: '流星ろたん',
         episodesCount: 6,
         badge: '連載中',
@@ -123,61 +125,61 @@ export const comicsData: Comic[] = [
             {
                 id: 1,
                 title: '第1話',
-                imageUrl: '/comics/ryusei-rotan/rotan_contact.jpg',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_contact.jpg'),
 
             },
             {
                 id: 2,
                 title: '第2話',
-                imageUrl: '/comics/ryusei-rotan/rotan_oyugi.jpg',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_oyugi.jpg'),
 
             },
             {
                 id: 3,
                 title: '第3話',
-                imageUrl: '/comics/ryusei-rotan/rotan_otomari.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_otomari.png'),
 
             },
             {
                 id: 4,
                 title: '第4話',
-                imageUrl: '/comics/ryusei-rotan/rotan_market.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_market.png'),
 
             },
             {
                 id: 5,
                 title: '第5話',
-                imageUrl: '/comics/ryusei-rotan/rotan_timekeep.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_timekeep.png'),
 
             },
             {
                 id: 6,
                 title: '第6話',
-                imageUrl: '/comics/ryusei-rotan/rotan_sight2.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_sight2.png'),
 
             },
             {
                 id: 7,
                 title: '第7話',
-                imageUrl: '/comics/ryusei-rotan/rotan_cleanup.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_cleanup.png'),
 
             },
             {
                 id: 8,
                 title: '第8話',
-                imageUrl: '/comics/ryusei-rotan/rotan_library.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_library.png'),
 
             },
             {
                 id: 9,
                 title: '第9話',
-                imageUrl: '/comics/ryusei-rotan/rotan_twicast.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_twicast.png'),
 
             },
             {
                 id: 10,
                 title: '第10話',
-                imageUrl: '/comics/ryusei-rotan/rotan_relative.png',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_relative.png'),
 
             },
         ]

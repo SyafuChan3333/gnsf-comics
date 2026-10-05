@@ -1,11 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { siteAbsPath } from "@/libs/astro";
 ---
 
 <Layout title="作者プロフィール - 4コマ漫画ポートフォリオ">
   <div class="about-container">
     <nav class="breadcrumb">
-      <a href="/">← 作品一覧へ戻る</a>
+      <a href={siteAbsPath("/")}>← 作品一覧へ戻る</a>
     </nav>
 
     <header class="about-header">
@@ -15,7 +16,7 @@ import Layout from "@/layouts/Layout.astro";
     <section class="profile-card">
       <div class="avatar-wrapper">
         <img
-          src="/gnsf-icon.jpg"
+          src={siteAbsPath("/gnsf-icon.jpg")}
           alt="作者アイコン"
           class="avatar"
         />

@@ -1,6 +1,7 @@
 ---
 import classNames from 'classnames';
 import Footer from '../components/Footer.astro';
+import { siteAbsPath } from '@/libs/astro';
 
 interface Props {
 	title?: string;
@@ -15,17 +16,17 @@ const { title = "4コマ漫画ポートフォリオ", className } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={siteAbsPath("/favicon.svg")} />
+		<link rel="icon" href={siteAbsPath("/favicon.ico")} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
 		<header class="header">
 			<div class="header-container">
-				<a href="/" class="site-title">📚 4コマ漫画ギャラリー</a>
+				<a href={siteAbsPath("/")} class="site-title">📚 4コマ漫画ギャラリー</a>
 				<nav class="nav">
-					<!-- <a href="/about">作者について</a> -->
+					<!-- <a href={relativePath("/about")}>作者について</a> -->
 				</nav>
 			</div>
 		</header>
