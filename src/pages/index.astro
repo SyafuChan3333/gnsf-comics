@@ -14,7 +14,7 @@ import { siteAbsPath } from '@/libs/astro';
     {comicsData.map((comic) => (
       <article class="comic-card">
         <a href={siteAbsPath(`/comics/${comic.slug}`)} class="card-link">
-          <div class={styles.cardImageWrapper}>
+          <div class="image-wrapper">
             <img src={comic.coverImage} alt={comic.title} loading="lazy" />
             <span class="badge">{comic.badge}</span>
           </div>
