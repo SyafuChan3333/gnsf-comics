@@ -174,6 +174,12 @@ export const comicsData: Comic[] = [
                 imageUrl: '/comics/ryusei-rotan/rotan_twicast.png',
 
             },
+            {
+                id: 10,
+                title: '第10話',
+                imageUrl: '/comics/ryusei-rotan/rotan_relative.png',
+
+            },
         ]
     },
     // 2026-09-28 スミス 例示用データを非表示
