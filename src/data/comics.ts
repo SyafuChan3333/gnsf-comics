@@ -110,7 +110,7 @@ export const comicsData: Comic[] = [
         description: '',
         coverImage: siteAbsPath('/comics/ryusei-rotan/ryusei-rotan-logo.jpg'),
         logoText: '流星ろたん',
-        episodesCount: 10,
+        episodesCount: 12,
         badge: '連載中',
         author: {
             name: '流星ろたん',
@@ -180,6 +180,18 @@ export const comicsData: Comic[] = [
                 id: 10,
                 title: '第10話',
                 imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_relative.png'),
+
+            },
+            {
+                id: 11,
+                title: '第11話',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_sight.png'),
+
+            },
+            {
+                id: 12,
+                title: '第12話',
+                imageUrl: siteAbsPath('/comics/ryusei-rotan/rotan_family.png'),
 
             },
         ]
