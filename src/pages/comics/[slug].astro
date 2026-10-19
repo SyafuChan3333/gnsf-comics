@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import { comicsData } from '@/data/comics';
 import { ComicViewer } from '@/components/ComicViewer';
 import { siteAbsPath } from '@/libs/astro';
+import * as styles from '@/styles/pages/comics/[slug].css';
+import classNames from 'classnames';
 
 export function getStaticPaths() {
   return comicsData.map((comic) => ({
@@ -13,32 +15,32 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 // AstroのgetStaticPathsで存在するslug以外は404に飛ばされるので確実にcomicは存在する
 const comic = comicsData.find((item) => item.slug === slug)!;
----
 
+---
 <Layout title={`${comic.title} - 4コマ漫画ビューアー`}>
-  <div class="comic-container">
-    <nav class="breadcrumb">
-      <a href={siteAbsPath("/")}>← 作品一覧へ戻る</a>
+  <div class={styles.comicContainer}>
+    <nav class={styles.breadcrumb}>
+      <a href={siteAbsPath("/")} class={styles.breadcrumbLink}>← 作品一覧へ戻る</a>
     </nav>
 
-    <header class="comic-header">
-      <div class="header-badge">{comic.badge}</div>
-      <h1>{comic.title}</h1>
-      <p class="description">{comic.description}</p>
+    <header class={styles.comicHeader}>
+      <div class={styles.headerBadge}>{comic.badge}</div>
+      <h1 class={styles.comicHeaderHeading}>{comic.title}</h1>
+      <p class={styles.comicHeaderDescription}>{comic.description}</p>
     </header>
 
     <!-- クレジット＆ソーシャルリンク（作者・フィーチャリング活動者） -->
-    <section class="credits-section">
-      <h2 class="section-title">✨ クレジット</h2>
-      
-      <div class="creators-grid">
+    <section class={styles.creditsSection}>
+      <h2 class={styles.sectionTitle}>✨ クレジット</h2>
+
+      <div class={styles.creatorsGrid}>
         <!-- 作者 -->
-        <div class="creator-card author-card">
-          <div class="creator-role">{comic.author.role}</div>
-          <h3 class="creator-name">{comic.author.name}</h3>
-          <div class="social-links">
+        <div class={classNames(styles.creatorCard, styles.authorCard)}>
+          <div class={styles.creatorRole}>{comic.author.role}</div>
+          <h3 class={styles.creatorName}>{comic.author.name}</h3>
+          <div class={styles.socialLinks}>
             {comic.author.socialLinks.map((link) => (
-              <a href={link.url} target="_blank" rel="noopener noreferrer" class="social-btn">
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class={styles.socialButton}>
                 <span class="platform-icon">🔗</span>
                 <span>{link.platform}</span>
               </a>
@@ -48,12 +50,12 @@ const comic = comicsData.find((item) => item.slug === slug)!;
 
         <!-- フィーチャリング活動者 -->
         {comic.featuredCreators && comic.featuredCreators.map((featured) => (
-          <div class="creator-card featured-card">
-            <div class="creator-role">{featured.role}</div>
-            <h3 class="creator-name">{featured.name}</h3>
-            <div class="social-links">
+          <div class={classNames(styles.creatorCard, styles.featuredCard)}>
+            <div class={styles.creatorRole}>{featured.role}</div>
+            <h3 class={styles.creatorName}>{featured.name}</h3>
+            <div class={styles.socialLinks}>
               {featured.socialLinks.map((link) => (
-                <a href={link.url} target="_blank" rel="noopener noreferrer" class="social-btn featured-link">
+                <a href={link.url} target="_blank" rel="noopener noreferrer" class={classNames(styles.socialButton, styles.featuredLink)}>
                   <span class="platform-icon">🌟</span>
                   <span>{link.platform}</span>
                 </a>
