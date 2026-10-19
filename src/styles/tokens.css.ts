@@ -17,6 +17,9 @@ export const palette = {
   gray$900: token("gray-900", color("#0f172a")),
   overlay: token("overlay", color("rgba(0 0 0 / 0.75)")),
   background: token("background", color("#ffffff")),
+  background$50: token("background-50", color("#fafafa")),
+  background$100: token("background-100", color("#eaeaea")),
+  foreground: token("foreground", color("#222")),
 };
 
 /* スペーストークン */
@@ -62,6 +65,14 @@ export const transition = {
   ease: token("transition-ease", `${unit(0.2, "s")} ease`),
 }
 
+export const border = {
+  default: token("border-default", `${unit(1, "px")} solid`),
+}
+
+export const width = {
+  mainContent: token("width-main-content", unit(960, "px")),
+}
+
 declareTokens(":root", [
   ...Object.values(palette),
   ...Object.values(space),
@@ -69,4 +80,5 @@ declareTokens(":root", [
   ...Object.values(radius),
   ...Object.values(shadow),
   ...Object.values(transition),
+  ...Object.values(border),
 ]);
