@@ -1,9 +1,19 @@
 import { ref } from "@/libs/cssToken";
 import { unit } from "@/libs/unit";
-import { style } from "@vanilla-extract/css";
-import { border, fontSize, palette, space, width } from "@/styles/tokens.css";
+import { createVar, style } from "@vanilla-extract/css";
+import { border, fontSize, palette, space } from "@/styles/tokens.css";
 
 const full = unit(100, "%");
+
+const mainContentW = createVar();
+
+const layoutVariable = {
+    [mainContentW]: unit(960, "px"),
+};
+
+export const layout = style({
+    vars: layoutVariable,
+});
 
 export const base = style({
     margin: 0,
@@ -27,12 +37,12 @@ export const base = style({
 
 export const header = style({
     background: ref(palette.background),
-    borderBottom: `${ref(border.default)} ${ref(palette.background$100)}`,
+    borderBottom: `${ref(border.xs)} ${ref(palette.background$100)}`,
     zIndex: 100,
 });
 
 export const headerContainer = style({
-    maxWidth: ref(width.mainContent),
+    maxWidth: mainContentW,
     margin: `0 auto`,
     padding: `${ref(space.sm)} ${ref(space.md)}`,
     display: "flex",
@@ -61,7 +71,7 @@ export const navigationLink = style({
 
 export const mainContent = style({
     flex: 1,
-    maxWidth: ref(width.mainContent),
+    maxWidth: mainContentW,
     width: full,
     margin: `0 auto`,
     padding: `${ref(space.lg)} ${ref(space.md)}`,

@@ -22,7 +22,7 @@ const { title = "4コマ漫画ポートフォリオ", className } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class={styles.base}>
+	<body class={classNames(styles.layout, styles.base)}>
 		<header class={styles.header}>
 			<div class={styles.headerContainer}>
 				<a href={siteAbsPath("/")} class={styles.siteTitle}>📚 4コマ漫画ギャラリー</a>

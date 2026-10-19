@@ -1,10 +1,28 @@
 import { ref } from "@/libs/cssToken";
-import { style } from "@vanilla-extract/css";
-import { fontSize, palette, radius, space } from "@/styles/tokens.css";
+import { createVar, style } from "@vanilla-extract/css";
+import { border, fontSize, palette, radius, space } from "@/styles/tokens.css";
 import { unit } from "@/libs/unit";
+import { color } from "@/libs/colorStr";
+
+const aboutContainerW = createVar();
+const avatarRadius = createVar();
+const xComColor = createVar();
+const pixivColor = createVar();
+const profileBreakpoint = unit(500, "px");
+
+const pageVariables = {
+  [aboutContainerW]: unit(680, "px"),
+  [avatarRadius]: unit(50, "px"),
+  [xComColor]: color("#000"),
+  [pixivColor]: color("#0080ff"),
+}
+
+export const aboutPage = style({
+  vars: pageVariables,
+})
 
 export const aboutContainer = style({
-  maxWidth: unit(680, "px"),
+  maxWidth: aboutContainerW,
   marginLeft: "auto",
   marginRight: "auto",
 });
@@ -17,9 +35,6 @@ export const breadcrumbLink = style({
   color: ref(palette.blue$500),
   textDecoration: "none",
   fontSize: ref(fontSize.sm),
-});
-
-export const breadcrumbLinkHover = style({
   selectors: {
     "&:hover": {
       textDecoration: "underline",
@@ -28,7 +43,7 @@ export const breadcrumbLinkHover = style({
 });
 
 export const aboutHeaderHeading = style({
-  fontSize: unit(1.8, "rem"),
+  fontSize: ref(fontSize.x3l),
   marginBottom: ref(space.lg),
 });
 
@@ -38,13 +53,11 @@ export const profileCard = style({
   backgroundColor: ref(palette.background),
   padding: ref(space.lg),
   borderRadius: ref(radius.md),
-  borderWidth: unit(1, "px"),
-  borderStyle: "solid",
-  borderColor: ref(palette.gray$200),
+  border: `${ref(border.xs)} ${ref(palette.gray$200)}`,
   alignItems: "center",
   marginBottom: ref(space.xl),
   "@media": {
-    "(max-width: 500px)": {
+    [`(max-width: ${profileBreakpoint})`]: {
       flexDirection: "column",
       textAlign: "center",
     },
@@ -52,9 +65,9 @@ export const profileCard = style({
 });
 
 export const avatar = style({
-  width: unit(100, "px"),
-  height: unit(100, "px"),
-  borderRadius: "50%",
+  width: `calc(${avatarRadius} * 2)`,
+  height: `calc(${avatarRadius} * 2)`,
+  borderRadius: avatarRadius,
   objectFit: "cover",
 });
 
@@ -80,9 +93,7 @@ export const aboutSection = style({
   backgroundColor: ref(palette.background),
   padding: ref(space.lg),
   borderRadius: ref(radius.md),
-  borderWidth: unit(1, "px"),
-  borderStyle: "solid",
-  borderColor: ref(palette.gray$200),
+  border: `${ref(border.xs)} ${ref(palette.gray$200)}`,
   marginBottom: ref(space.lg),
 });
 
@@ -91,17 +102,7 @@ export const aboutSectionHeading = style({
   margin: 0,
   marginBottom: ref(space.md),
   paddingBottom: ref(space.xs),
-  borderBottomWidth: unit(2, "px"),
-  borderBottomStyle: "solid",
-  borderBottomColor: ref(palette.gray$100),
-});
-
-export const aboutSectionList = style({
-  margin: unit(0, "px"),
-  paddingLeft: unit(1.2, "rem"),
-  color: ref(palette.gray$600),
-  fontSize: ref(fontSize.sm),
-  lineHeight: 1.8,
+  borderBottom: `${ref(border.sm)} ${ref(palette.gray$100)}`,
 });
 
 export const snsLinks = style({
@@ -121,9 +122,9 @@ export const snsButton = style({
 });
 
 export const xButton = style({
-  backgroundColor: "#000",
+  backgroundColor: xComColor,
 });
 
 export const pixivButton = style({
-  backgroundColor: ref(palette.blue$500),
+  backgroundColor: pixivColor,
 });

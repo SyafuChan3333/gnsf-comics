@@ -1,6 +1,6 @@
 import { ref } from "@/libs/cssToken";
 import { createVar, style } from "@vanilla-extract/css";
-import { fontSize, palette, radius, shadow, space, transition } from "@/styles/tokens.css";
+import { border, fontSize, palette, radius, shadow, space, transition } from "@/styles/tokens.css";
 import { calc, scale, unit } from "@/libs/unit";
 import { createTransition } from "@/libs/cssTransition";
 
@@ -9,10 +9,12 @@ const base = unit(4, "px");
 
 const cardMinW = createVar();
 
+const pageVariables = {
+    [cardMinW]: unit(280, "px"),
+};
+
 export const indexPage = style({
-    vars: {
-        [cardMinW]: unit(280, "px"),
-    }
+    vars: pageVariables
 })
 
 export const hero = style({
@@ -23,7 +25,7 @@ export const hero = style({
 
 export const heroHeading = style({
     color: ref(palette.gray$900),
-    fontSize: ref(fontSize.x3l),
+    fontSize: ref(fontSize.x4l),
     marginBottom: ref(space.xs),
 });
 
@@ -48,7 +50,7 @@ export const comicCard = style({
         transform: ref(transition.ease),
         boxShadow: ref(transition.ease),
     }),
-    border: `${unit(1, "px")} solid ${ref(palette.gray$200)}`,
+    border: `${ref(border.xs)} ${ref(palette.gray$200)}`,
 
     selectors: {
         "&:hover": {
@@ -143,7 +145,7 @@ export const cardMeta = style({
     fontSize: ref(fontSize.sm),
     color: ref(palette.gray$500),
     paddingTop: ref(space.sm),
-    borderTop: `${unit(1, "px")} solid ${ref(palette.gray$200)}`,
+    borderTop: `${ref(border.xs)} ${ref(palette.gray$200)}`,
 });
 
 export const readButton = style({

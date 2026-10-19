@@ -41,7 +41,8 @@ export const fontSize = {
   lg: token("font-size-lg", unit(1.125, "rem")),
   xl: token("font-size-xl", unit(1.3, "rem")),
   x2l: token("font-size-2xl", unit(1.5, "rem")),
-  x3l: token("font-size-3xl", unit(2, "rem")),
+  x3l: token("font-size-2xl", unit(1.8, "rem")),
+  x4l: token("font-size-3xl", unit(2, "rem")),
 };
 
 /* ボーダーラディアス */
@@ -66,11 +67,8 @@ export const transition = {
 }
 
 export const border = {
-  default: token("border-default", `${unit(1, "px")} solid`),
-}
-
-export const width = {
-  mainContent: token("width-main-content", unit(960, "px")),
+  xs: token("border-default", `${unit(1, "px")} solid`),
+  sm: token("border-sm", `${unit(2, "px")} solid`),
 }
 
 declareTokens(":root", [

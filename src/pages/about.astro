@@ -4,10 +4,10 @@ import { siteAbsPath } from "@/libs/astro";
 import * as styles from "@/styles/pages/about.css";
 ---
 
-<Layout title="作者プロフィール - 4コマ漫画ポートフォリオ">
+<Layout title="作者プロフィール - 4コマ漫画ポートフォリオ" className={styles.aboutPage}>
   <div class={styles.aboutContainer}>
     <nav class={styles.breadcrumb}>
-      <a href={siteAbsPath("/")} class={`${styles.breadcrumbLink} ${styles.breadcrumbLinkHover}`}>← 作品一覧へ戻る</a>
+      <a href={siteAbsPath("/")} class={styles.breadcrumbLink}>← 作品一覧へ戻る</a>
     </nav>
 
     <header class="about-header">
