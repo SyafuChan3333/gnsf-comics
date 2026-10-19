@@ -1,29 +1,30 @@
 ---
 import { siteAbsPath } from '@/libs/astro';
+import * as styles from '@/styles/components/Footer.css';
 
 interface Props {
   authorName?: string;
   bio?: string;
 }
 
-const { 
-  authorName = "げんかい社不ちゃん。", 
-  bio = "VTuberさんのFA描いたり楽しく推し活中！限界社不イラストレーター4人娘＋お姉さんで共同運営" 
+const {
+  authorName = "げんかい社不ちゃん。",
+  bio = "VTuberさんのFA描いたり楽しく推し活中！限界社不イラストレーター4人娘＋お姉さんで共同運営"
 } = Astro.props;
 ---
 
-<footer class="footer">
-  <div class="footer-container">
-    <div class="profile-section">
-      <h3>{authorName}</h3>
-      <p>{bio}</p>
+<footer class={styles.footer}>
+  <div class={styles.footerContainer}>
+    <div class={styles.profileSection}>
+      <h3 class={styles.profileHeading}>{authorName}</h3>
+      <p class={styles.profileBio}>{bio}</p>
     </div>
-    <div class="links-section">
-      <a href={siteAbsPath("/")}>ホーム</a>
-      <a href={siteAbsPath("/about")}>プロフィール</a>
+    <div class={styles.linksSection}>
+      <a href={siteAbsPath("/")} class={`${styles.link} ${styles.linkHover}`}>ホーム</a>
+      <a href={siteAbsPath("/about")} class={`${styles.link} ${styles.linkHover}`}>プロフィール</a>
     </div>
   </div>
-  <div class="copyright">
+  <div class={styles.copyright}>
     &copy; {new Date().getFullYear()} {authorName}. All rights reserved.
   </div>
 </footer>
