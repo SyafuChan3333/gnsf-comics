@@ -5,6 +5,15 @@ import * as styles from "@/styles/components/ComicViewer.css";
 import classNames from "classnames";
 import { HtmlComment } from "@/components/HtmlComment";
 
+const episodeHash = {
+    parse: (hash: string) => {
+        const match = /^#episode-(\d+)$/.exec(hash);
+        if (!match) return undefined;
+        return Number(match[1]) - 1;
+    },
+    build: (episode: number) => `#episode-${episode + 1}`
+}
+
 export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
     const [current, setCurrent] = useState(0);
     const mangaAreaHandle = useRef<HTMLDivElement>(null);
@@ -17,7 +26,7 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
 
     const navigateToEpisode = useCallback((episode: number) => {
         const url = new URL(window.location.href);
-        url.hash = `episode-${episode+1}`;
+        url.hash = episodeHash.build(episode);
         window.history.pushState({}, "", url);
         openEpisode(episode);
     }, [openEpisode]);
@@ -28,9 +37,7 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
     useEffect(() => {
         const parseHashPage = () => {
             const url = new URL(window.location.href);
-            const match = /^#episode-(\d+)$/.exec(url.hash);
-            if (!match) return undefined;
-            return Number(match[1]) - 1;
+            return episodeHash.parse(url.hash);
         }
 
         const onHistoryStateChange = () => {
