@@ -30,7 +30,7 @@ export const episodeSelectorButtons = style({
 
 export const episodeButton = style({
   background: ref(palette.background),
-  border: `1px solid ${ref(palette.purple$200)}`,
+  border: `1px solid ${ref(palette.gray$300)}`,
   color: ref(palette.gray$700),
   padding: `${ref(space.xs)} ${ref(space.md)}`,
   borderRadius: ref(radius.lg),

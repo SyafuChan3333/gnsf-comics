@@ -15,7 +15,6 @@ export const palette = {
   gray$700: token("gray-700", color("#334155")),
   gray$800: token("gray-800", color("#1e293b")),
   gray$900: token("gray-900", color("#0f172a")),
-  purple$200: token("purple-200", color("#834bb1")),
   overlay: token("overlay", color("rgba(0 0 0 / 0.75)")),
   background: token("background", color("#ffffff")),
 };
@@ -59,7 +58,7 @@ export const shadow = {
 };
 
 export const transition = {
-easeFast: token("transition-ease", `${unit(0.1, "s")} ease`),
+  easeFast: token("transition-ease", `${unit(0.1, "s")} ease`),
   ease: token("transition-ease", `${unit(0.2, "s")} ease`),
 }
 
