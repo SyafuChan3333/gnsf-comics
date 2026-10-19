@@ -1,36 +1,37 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { comicsData } from '@/data/comics';
+import * as styles from '@/styles/pages/index.css'
 import { siteAbsPath } from '@/libs/astro';
 ---
 
-<Layout title="4コマ漫画ポートフォリオ - 作品一覧">
-  <section class="hero">
-    <h1>作品ギャラリー</h1>
-    <p>気楽に読める4コマ漫画を公開しています。作品カードをタップしてすぐ読めます！</p>
+<Layout title="4コマ漫画ポートフォリオ - 作品一覧" className={styles.indexPage}>
+  <section class={styles.hero}>
+    <h1 class={styles.heroHeading}>作品ギャラリー</h1>
+    <p class={styles.heroParagraph}>気楽に読める4コマ漫画を公開しています。作品カードをタップしてすぐ読めます！</p>
   </section>
 
-  <section class="comic-grid">
+  <section class={styles.comicGrid}>
     {comicsData.map((comic) => (
-      <article class="comic-card">
-        <a href={siteAbsPath(`/comics/${comic.slug}`)} class="card-link">
-          <div class="image-wrapper">
-            <img src={comic.coverImage} alt={comic.title} loading="lazy" />
-            <span class="badge">{comic.badge}</span>
+      <article class={styles.comicCard}>
+        <a href={siteAbsPath(`/comics/${comic.slug}`)} class={styles.cardLink}>
+          <div class={styles.cardImageWrapper}>
+            <img class={styles.cardImage} src={comic.coverImage} alt={comic.title} loading="lazy" />
+            <span class={styles.cardBadge}>{comic.badge}</span>
           </div>
-          <div class="card-content">
-            <h2 class="comic-title">{comic.title}</h2>
-            <p class="comic-desc">{comic.description}</p>
+          <div class={styles.cardContent}>
+            <h2 class={styles.comicTitle}>{comic.title}</h2>
+            <p class={styles.comicDescription}>{comic.description}</p>
             {comic.featuredCreators && comic.featuredCreators.length > 0 && (
-              <div class="featuring-badge-list">
+              <div class={styles.featuringBadgeList}>
                 {comic.featuredCreators.map(creator => (
-                  <span class="featuring-tag">Featuring: {creator.name}</span>
+                  <span class={styles.featuringTag}>Featuring: {creator.name}</span>
                 ))}
               </div>
             )}
-            <div class="card-meta">
+            <div class={styles.cardMeta}>
               <span>全 {comic.episodesCount} 話</span>
-              <span class="read-button">読む →</span>
+              <span class={styles.readButton}>読む →</span>
             </div>
           </div>
         </a>

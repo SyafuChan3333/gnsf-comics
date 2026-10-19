@@ -15,18 +15,20 @@ export const palette = {
   gray$700: token("gray-700", color("#334155")),
   gray$800: token("gray-800", color("#1e293b")),
   gray$900: token("gray-900", color("#0f172a")),
-  purple$200: token("purple-200", color("#cdb5e1")),
+  purple$200: token("purple-200", color("#834bb1")),
+  overlay: token("overlay", color("rgba(0 0 0 / 0.75)")),
   background: token("background", color("#ffffff")),
 };
 
 /* スペーストークン */
 export const space = {
+  x2s: token("space-2xs", unit(0.25, "rem")),
   xs: token("space-xs", unit(0.5, "rem")),
   sm: token("space-sm", unit(0.75, "rem")),
   md: token("space-md", unit(1, "rem")),
   lg: token("space-lg", unit(1.5, "rem")),
   xl: token("space-xl", unit(2, "rem")),
-  xxl: token("space-2xl", unit(2.5, "rem")),
+  x2l: token("space-2xl", unit(2.5, "rem")),
 };
 
 /* フォントサイズトークン */
@@ -36,11 +38,13 @@ export const fontSize = {
   base: token("font-size-base", unit(0.95, "rem")),
   lg: token("font-size-lg", unit(1.125, "rem")),
   xl: token("font-size-xl", unit(1.3, "rem")),
-  xxl: token("font-size-2xl", unit(1.5, "rem")),
+  x2l: token("font-size-2xl", unit(1.5, "rem")),
+  x3l: token("font-size-3xl", unit(2, "rem")),
 };
 
 /* ボーダーラディアス */
 export const radius = {
+  xs: token("radius-xs", unit(4, "px")),
   sm: token("radius-sm", unit(8, "px")),
   md: token("radius-md", unit(12, "px")),
   lg: token("radius-lg", unit(20, "px")),
@@ -54,10 +58,15 @@ export const shadow = {
   lg: token("shadow-lg", "0 2px 6px rgba(2,132,199,0.3)"),
 };
 
+export const transition = {
+  ease: token("transition-ease", `${unit(0.2, "s")} ease`),
+}
+
 declareTokens(":root", [
   ...Object.values(palette),
   ...Object.values(space),
   ...Object.values(fontSize),
   ...Object.values(radius),
   ...Object.values(shadow),
+  ...Object.values(transition),
 ]);
