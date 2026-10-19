@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { Comic } from "@/data/comics";
 import { useCallback, useRef, useState } from "react";
 import * as styles from "@/styles/components/ComicViewer.css";
@@ -15,8 +15,36 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
         mangaArea?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, [setCurrent, mangaAreaHandle]);
 
-    const openPrev = useCallback(() => openEpisode(current - 1), [current]);
-    const openNext = useCallback(() => openEpisode(current + 1), [current]);
+    const navigateToEpisode = useCallback((episode: number) => {
+        const url = new URL(window.location.href);
+        url.hash = `episode-${episode+1}`;
+        window.history.pushState({}, "", url);
+        openEpisode(episode);
+    }, [openEpisode]);
+
+    const navigatePrev = useCallback(() => navigateToEpisode(current - 1), [current]);
+    const navigateNext = useCallback(() => navigateToEpisode(current + 1), [current]);
+    
+    useEffect(() => {
+        const parseHashPage = () => {
+            const url = new URL(window.location.href);
+            const match = /^#episode-(\d+)$/.exec(url.hash);
+            if (!match) return undefined;
+            return Number(match[1]) - 1;
+        }
+
+        const onHistoryStateChange = () => {
+            const page = parseHashPage();
+            openEpisode(page ?? 0);
+        }
+
+        onHistoryStateChange();
+
+        window.addEventListener("popstate", onHistoryStateChange);
+        return () => {
+            window.removeEventListener("popstate", onHistoryStateChange);
+        }
+    }, []);
 
     return (
         <main className={styles.viewerSection}>
@@ -31,7 +59,7 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
                                 idx === current && "active"
                             )}
                             data-ep-index={idx}
-                            onClick={() => openEpisode(idx)}
+                            onClick={() => navigateToEpisode(idx)}
                             key={`ep-btn-${idx}`}
                         >
                             {ep.title}
@@ -40,10 +68,10 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
                 </div>
             </div>
 
-            <HtmlComment text="エピソードタイトル"/>
+            <HtmlComment text="エピソードタイトル" />
             <h2 id="ep-title" className={styles.episodeTitle}>{comic.episodes[current]?.title}</h2>
 
-            <HtmlComment text="4コマ漫画表示領域"/>
+            <HtmlComment text="4コマ漫画表示領域" />
             <div className={styles.mangaViewer} ref={mangaAreaHandle}>
                 {comic.episodes.map((ep, idx) => (
                     <div
@@ -57,6 +85,7 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
                         id={`ep-panel-${idx}`}
                         key={`ep-panel-${idx}`}
                     >
+                        <a id={`page-${idx+1}`} />
                         <img
                             src={ep.imageUrl}
                             alt={`${comic.title} ${ep.title}`}
@@ -67,11 +96,11 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
                 ))}
             </div>
 
-            <HtmlComment text="ナビゲーションコントロール"/>
+            <HtmlComment text="ナビゲーションコントロール" />
             <div className={styles.navigationControls}>
-                <button id="prev-btn" className={styles.navigationButton} onClick={openPrev} disabled={current === 0}>← 前の話</button>
+                <button id="prev-btn" className={styles.navigationButton} onClick={navigatePrev} disabled={current === 0}>← 前の話</button>
                 <span id="episode-indicator" className={styles.episodeIndicator}>{current + 1} / {comic.episodes.length} 話</span>
-                <button id="next-btn" className={styles.navigationButton} onClick={openNext} disabled={current === comic.episodes.length - 1}>次の話 →</button>
+                <button id="next-btn" className={styles.navigationButton} onClick={navigateNext} disabled={current === comic.episodes.length - 1}>次の話 →</button>
             </div>
         </main>
     )
