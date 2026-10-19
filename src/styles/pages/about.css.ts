@@ -1,6 +1,6 @@
 import { ref } from "@/libs/cssToken";
 import { style } from "@vanilla-extract/css";
-import { fontSize, palette, radius, space } from "../tokens.css";
+import { fontSize, palette, radius, space } from "@/styles/tokens.css";
 import { unit } from "@/libs/unit";
 
 export const aboutContainer = style({

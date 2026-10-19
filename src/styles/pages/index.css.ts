@@ -1,6 +1,6 @@
 import { ref } from "@/libs/cssToken";
 import { createVar, style } from "@vanilla-extract/css";
-import { fontSize, palette, radius, shadow, space, transition } from "../tokens.css";
+import { fontSize, palette, radius, shadow, space, transition } from "@/styles/tokens.css";
 import { calc, scale, unit } from "@/libs/unit";
 import { createTransition } from "@/libs/cssTransition";
 

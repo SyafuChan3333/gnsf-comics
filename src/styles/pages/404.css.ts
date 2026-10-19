@@ -1,6 +1,6 @@
 import { ref } from "@/libs/cssToken";
 import { style } from "@vanilla-extract/css";
-import { palette, space, transition } from "../tokens.css";
+import { palette, space, transition } from "@/styles/tokens.css";
 import { unit } from "@/libs/unit";
 import { createTransition } from "@/libs/cssTransition";
 

@@ -1,6 +1,6 @@
-import { declareTokens, token } from "../libs/cssToken";
-import { color } from "../libs/colorStr";
-import { unit } from "../libs/unit";
+import { declareTokens, token } from "@/libs/cssToken";
+import { color } from "@/libs/colorStr";
+import { unit } from "@/libs/unit";
 
 /* カラートークン */
 export const palette = {
