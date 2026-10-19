@@ -1,1 +1,1 @@
-A light-weight website project for publishing mangas written by people at dejirumi
+限界社不ちゃん。の4コマ漫画サイト
