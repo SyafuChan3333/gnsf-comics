@@ -18,10 +18,11 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
     const [current, setCurrent] = useState(0);
     const mangaAreaHandle = useRef<HTMLDivElement>(null);
 
-    const openEpisode = useCallback((episode: number) => {
+    const openEpisode = useCallback((episode: number, scroll: boolean = true) => {
         setCurrent(episode);
         const mangaArea = mangaAreaHandle.current;
-        mangaArea?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (scroll)
+            mangaArea?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, [setCurrent, mangaAreaHandle]);
 
     const navigateToEpisode = useCallback((episode: number) => {
@@ -42,7 +43,7 @@ export const ComicViewer: React.FC<{ comic: Comic }> = ({ comic }) => {
 
         const onHistoryStateChange = () => {
             const page = parseHashPage();
-            openEpisode(page ?? 0);
+            openEpisode(page ?? 0, page != null);
         }
 
         onHistoryStateChange();
