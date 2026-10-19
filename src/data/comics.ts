@@ -25,7 +25,7 @@ export interface Comic {
     description: string;
     coverImage: string;
     logoText: string;
-    episodesCount: number;
+    episodesCount: number;  // TODO: calculate dynamically
     badge: string;
     author: Creator;
     featuredCreators?: Creator[];
@@ -110,7 +110,7 @@ export const comicsData: Comic[] = [
         description: '',
         coverImage: siteAbsPath('/comics/ryusei-rotan/ryusei-rotan-logo.jpg'),
         logoText: '流星ろたん',
-        episodesCount: 6,
+        episodesCount: 10,
         badge: '連載中',
         author: {
             name: '流星ろたん',
