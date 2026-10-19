@@ -1,30 +1,31 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { siteAbsPath } from "@/libs/astro";
+import * as styles from "@/styles/pages/about.css";
 ---
 
 <Layout title="作者プロフィール - 4コマ漫画ポートフォリオ">
-  <div class="about-container">
-    <nav class="breadcrumb">
-      <a href={siteAbsPath("/")}>← 作品一覧へ戻る</a>
+  <div class={styles.aboutContainer}>
+    <nav class={styles.breadcrumb}>
+      <a href={siteAbsPath("/")} class={`${styles.breadcrumbLink} ${styles.breadcrumbLinkHover}`}>← 作品一覧へ戻る</a>
     </nav>
 
     <header class="about-header">
-      <h1>作者プロフィール</h1>
+      <h1 class={styles.aboutHeaderHeading}>作者プロフィール</h1>
     </header>
 
-    <section class="profile-card">
+    <section class={styles.profileCard}>
       <div class="avatar-wrapper">
         <img
           src={siteAbsPath("/gnsf-icon.jpg")}
           alt="作者アイコン"
-          class="avatar"
+          class={styles.avatar}
         />
       </div>
       <div class="profile-info">
-        <h2>げんかい社不ちゃん。 (Author)</h2>
-        <p class="tagline">4コマ漫画家 / イラストレーター</p>
-        <p class="bio">
+        <h2 class={styles.profileHeading}>げんかい社不ちゃん。 (Author)</h2>
+        <p class={styles.tagline}>4コマ漫画家 / イラストレーター</p>
+        <p class={styles.bio}>
           VTuberさんのFA描いたり楽しく推し活中！
           限界社不イラストレーター4人娘＋お姉さんで共同運営
           FAはご本人様のみ使用可
@@ -32,16 +33,15 @@ import { siteAbsPath } from "@/libs/astro";
       </div>
     </section>
 
-
-    <section class="about-section">
-      <h2>リンク / SNS</h2>
-      <div class="sns-links">
+    <section class={styles.aboutSection}>
+      <h2 class={styles.aboutSectionHeading}>リンク / SNS</h2>
+      <div class={styles.snsLinks}>
         <a
           href="https://x.com/genkaisyafuchan"
           target="_blank"
           rel="noopener noreferrer"
-          class="sns-btn x-btn">X (Twitter)</a
-        >
+          class={`${styles.snsButton} ${styles.xButton}`}
+        >X (Twitter)</a>
       </div>
     </section>
   </div>
