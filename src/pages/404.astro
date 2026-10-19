@@ -1,15 +1,16 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { siteAbsPath } from '@/libs/astro';
+import * as styles from '@/styles/pages/404.css';
 ---
 
 <Layout title="ページが見つかりません - 4コマ漫画ポートフォリオ">
-  <section class="error-container">
-    <h1>404</h1>
-    <p>お探しのページは見つかりませんでした。</p>
-    <nav class="error-links">
-      <a href={siteAbsPath("/")} class="btn">トップページへ戻る</a>
-      <a href={siteAbsPath("/about")} class="btn">作者プロフィールを見る</a>
+  <section class={styles.errorContainer}>
+    <h1 class={styles.errorHeading}>404</h1>
+    <p class={styles.errorParagraph}>お探しのページは見つかりませんでした。</p>
+    <nav class={styles.errorLinks}>
+      <a href={siteAbsPath("/")} class={styles.btn}>トップページへ戻る</a>
+      <a href={siteAbsPath("/about")} class={styles.btn}>作者プロフィールを見る</a>
     </nav>
   </section>
 </Layout>
