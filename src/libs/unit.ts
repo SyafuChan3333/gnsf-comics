@@ -21,3 +21,5 @@ export const calc = <R extends number, U extends string>(fn: (n: number) => R, v
     obj.value = fn(obj.value);
     return objToUnit(obj) as Unit<U, `${R}`>;
 }
+
+export const scale = <U extends string>(f: number, value: Unit<U, NumString>) => calc(n => n * f, value);
