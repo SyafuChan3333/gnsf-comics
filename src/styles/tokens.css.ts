@@ -58,7 +58,7 @@ export const shadow = {
 };
 
 export const transition = {
-  easeFast: token("transition-ease", `${unit(0.1, "s")} ease`),
+  easeFast: token("transition-ease-fast", `${unit(0.1, "s")} ease`),
   ease: token("transition-ease", `${unit(0.2, "s")} ease`),
 }
 
