@@ -106,14 +106,14 @@ const sampleComics: Comic[] = [
 export const comicsData: Comic[] = [
     {
         slug: 'ryusei-rotan',
-        title: '流星ろたん 4コマ劇場',
+        title: '龍惺ろたん 4コマ劇場',
         description: '',
         coverImage: siteAbsPath('/comics/ryusei-rotan/ryusei-rotan-logo.jpg'),
-        logoText: '流星ろたん',
+        logoText: '龍惺ろたん',
         episodesCount: 12,
         badge: '連載中',
         author: {
-            name: '流星ろたん',
+            name: '龍惺ろたん',
             role: '出演',
             socialLinks: [
                 { platform: 'X (Twitter)', url: 'https://x.com/RyuseiRotan' },
